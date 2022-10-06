@@ -1,6 +1,3 @@
-kctl/
-gapic/
-generated/
 protos/api-common-protos/
 swift/.build/
 swift/kiosk-swift.xcodeproj/

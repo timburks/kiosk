@@ -1,0 +1,23 @@
+{
+    "methodConfig": [
+      {
+        "name": [
+          {
+            "service": "examples.kiosk.v1.Kiosk"
+          }
+        ],
+        "timeout": "20s",
+        "retryPolicy": {
+          "initialBackoff": "0.200s",
+          "maxBackoff": "10s",
+          "backoffMultiplier": 1.3,
+          "retryableStatusCodes": [
+            "ABORTED",
+            "CANCELLED",
+            "DEADLINE_EXCEEDED",
+            "UNAVAILABLE"
+          ]
+        }
+      }
+    ]
+  }
