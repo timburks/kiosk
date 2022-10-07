@@ -36,3 +36,8 @@ jobs:
 
     - name: make
       run: make
+
+    - name: test
+      run: |
+        kiosk-server &
+        go test . -v
