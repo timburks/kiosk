@@ -57,7 +57,7 @@ func NewDisplayClient(cc grpc.ClientConnInterface) DisplayClient {
 
 func (c *displayClient) CreateKiosk(ctx context.Context, in *Kiosk, opts ...grpc.CallOption) (*Kiosk, error) {
 	out := new(Kiosk)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/CreateKiosk", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/CreateKiosk", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func (c *displayClient) CreateKiosk(ctx context.Context, in *Kiosk, opts ...grpc
 
 func (c *displayClient) ListKiosks(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListKiosksResponse, error) {
 	out := new(ListKiosksResponse)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/ListKiosks", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/ListKiosks", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func (c *displayClient) ListKiosks(ctx context.Context, in *emptypb.Empty, opts 
 
 func (c *displayClient) GetKiosk(ctx context.Context, in *GetKioskRequest, opts ...grpc.CallOption) (*Kiosk, error) {
 	out := new(Kiosk)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/GetKiosk", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/GetKiosk", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +84,7 @@ func (c *displayClient) GetKiosk(ctx context.Context, in *GetKioskRequest, opts 
 
 func (c *displayClient) DeleteKiosk(ctx context.Context, in *DeleteKioskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/DeleteKiosk", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/DeleteKiosk", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +93,7 @@ func (c *displayClient) DeleteKiosk(ctx context.Context, in *DeleteKioskRequest,
 
 func (c *displayClient) CreateSign(ctx context.Context, in *Sign, opts ...grpc.CallOption) (*Sign, error) {
 	out := new(Sign)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/CreateSign", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/CreateSign", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +102,7 @@ func (c *displayClient) CreateSign(ctx context.Context, in *Sign, opts ...grpc.C
 
 func (c *displayClient) ListSigns(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListSignsResponse, error) {
 	out := new(ListSignsResponse)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/ListSigns", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/ListSigns", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -111,7 +111,7 @@ func (c *displayClient) ListSigns(ctx context.Context, in *emptypb.Empty, opts .
 
 func (c *displayClient) GetSign(ctx context.Context, in *GetSignRequest, opts ...grpc.CallOption) (*Sign, error) {
 	out := new(Sign)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/GetSign", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/GetSign", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +120,7 @@ func (c *displayClient) GetSign(ctx context.Context, in *GetSignRequest, opts ..
 
 func (c *displayClient) DeleteSign(ctx context.Context, in *DeleteSignRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/DeleteSign", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/DeleteSign", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +129,7 @@ func (c *displayClient) DeleteSign(ctx context.Context, in *DeleteSignRequest, o
 
 func (c *displayClient) SetSignIdForKioskIds(ctx context.Context, in *SetSignIdForKioskIdsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/SetSignIdForKioskIds", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/SetSignIdForKioskIds", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func (c *displayClient) SetSignIdForKioskIds(ctx context.Context, in *SetSignIdF
 
 func (c *displayClient) GetSignIdForKioskId(ctx context.Context, in *GetSignIdForKioskIdRequest, opts ...grpc.CallOption) (*GetSignIdResponse, error) {
 	out := new(GetSignIdResponse)
-	err := c.cc.Invoke(ctx, "/kiosk.Display/GetSignIdForKioskId", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/examples.kiosk.v1.Display/GetSignIdForKioskId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +146,7 @@ func (c *displayClient) GetSignIdForKioskId(ctx context.Context, in *GetSignIdFo
 }
 
 func (c *displayClient) GetSignIdsForKioskId(ctx context.Context, in *GetSignIdForKioskIdRequest, opts ...grpc.CallOption) (Display_GetSignIdsForKioskIdClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Display_ServiceDesc.Streams[0], "/kiosk.Display/GetSignIdsForKioskId", opts...)
+	stream, err := c.cc.NewStream(ctx, &Display_ServiceDesc.Streams[0], "/examples.kiosk.v1.Display/GetSignIdsForKioskId", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -266,7 +266,7 @@ func _Display_CreateKiosk_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/CreateKiosk",
+		FullMethod: "/examples.kiosk.v1.Display/CreateKiosk",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).CreateKiosk(ctx, req.(*Kiosk))
@@ -284,7 +284,7 @@ func _Display_ListKiosks_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/ListKiosks",
+		FullMethod: "/examples.kiosk.v1.Display/ListKiosks",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).ListKiosks(ctx, req.(*emptypb.Empty))
@@ -302,7 +302,7 @@ func _Display_GetKiosk_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/GetKiosk",
+		FullMethod: "/examples.kiosk.v1.Display/GetKiosk",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).GetKiosk(ctx, req.(*GetKioskRequest))
@@ -320,7 +320,7 @@ func _Display_DeleteKiosk_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/DeleteKiosk",
+		FullMethod: "/examples.kiosk.v1.Display/DeleteKiosk",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).DeleteKiosk(ctx, req.(*DeleteKioskRequest))
@@ -338,7 +338,7 @@ func _Display_CreateSign_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/CreateSign",
+		FullMethod: "/examples.kiosk.v1.Display/CreateSign",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).CreateSign(ctx, req.(*Sign))
@@ -356,7 +356,7 @@ func _Display_ListSigns_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/ListSigns",
+		FullMethod: "/examples.kiosk.v1.Display/ListSigns",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).ListSigns(ctx, req.(*emptypb.Empty))
@@ -374,7 +374,7 @@ func _Display_GetSign_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/GetSign",
+		FullMethod: "/examples.kiosk.v1.Display/GetSign",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).GetSign(ctx, req.(*GetSignRequest))
@@ -392,7 +392,7 @@ func _Display_DeleteSign_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/DeleteSign",
+		FullMethod: "/examples.kiosk.v1.Display/DeleteSign",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).DeleteSign(ctx, req.(*DeleteSignRequest))
@@ -410,7 +410,7 @@ func _Display_SetSignIdForKioskIds_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/SetSignIdForKioskIds",
+		FullMethod: "/examples.kiosk.v1.Display/SetSignIdForKioskIds",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).SetSignIdForKioskIds(ctx, req.(*SetSignIdForKioskIdsRequest))
@@ -428,7 +428,7 @@ func _Display_GetSignIdForKioskId_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kiosk.Display/GetSignIdForKioskId",
+		FullMethod: "/examples.kiosk.v1.Display/GetSignIdForKioskId",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DisplayServer).GetSignIdForKioskId(ctx, req.(*GetSignIdForKioskIdRequest))
@@ -461,7 +461,7 @@ func (x *displayGetSignIdsForKioskIdServer) Send(m *GetSignIdResponse) error {
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Display_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "kiosk.Display",
+	ServiceName: "examples.kiosk.v1.Display",
 	HandlerType: (*DisplayServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

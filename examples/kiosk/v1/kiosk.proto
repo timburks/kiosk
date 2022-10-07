@@ -23,7 +23,7 @@ import "google/type/latlng.proto";
 option java_multiple_files = true;
 option go_package = "github.com/googleapis/kiosk/rpc;kiosk"; 
 
-package kiosk;
+package examples.kiosk.v1;
 
 service Display {
   option (google.api.default_host) = "localhost";
