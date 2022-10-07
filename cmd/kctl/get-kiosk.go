@@ -21,7 +21,7 @@ var GetKioskFromFile string
 func init() {
 	DisplayServiceCmd.AddCommand(GetKioskCmd)
 
-	GetKioskCmd.Flags().Int32Var(&GetKioskInput.Id, "id", 0, "Required.")
+	GetKioskCmd.Flags().Int32Var(&GetKioskInput.Id, "id", 0, "Required. Kiosk id.")
 
 	GetKioskCmd.Flags().StringVar(&GetKioskFromFile, "from_file", "", "Absolute path to JSON file containing request payload")
 
@@ -34,6 +34,8 @@ var GetKioskCmd = &cobra.Command{
 	PreRun: func(cmd *cobra.Command, args []string) {
 
 		if GetKioskFromFile == "" {
+
+			cmd.MarkFlagRequired("id")
 
 		}
 

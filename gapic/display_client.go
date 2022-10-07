@@ -96,6 +96,8 @@ type internalDisplayClient interface {
 
 // DisplayClient is a client for interacting with .
 // Methods, except Close, may be called concurrently. However, fields must not be modified concurrently with method calls.
+//
+// The Kiosk Display service.
 type DisplayClient struct {
 	// The internal transport-dependent client.
 	internalClient internalDisplayClient
@@ -127,7 +129,7 @@ func (c *DisplayClient) Connection() *grpc.ClientConn {
 	return c.internalClient.Connection()
 }
 
-// CreateKiosk create a kiosk. This enrolls the kiosk for sign display.
+// CreateKiosk create a kiosk and enroll the kiosk for sign display.
 func (c *DisplayClient) CreateKiosk(ctx context.Context, req *kioskpb.Kiosk, opts ...gax.CallOption) (*kioskpb.Kiosk, error) {
 	return c.internalClient.CreateKiosk(ctx, req, opts...)
 }
@@ -147,7 +149,7 @@ func (c *DisplayClient) DeleteKiosk(ctx context.Context, req *kioskpb.DeleteKios
 	return c.internalClient.DeleteKiosk(ctx, req, opts...)
 }
 
-// CreateSign create a sign. This enrolls the sign for sign display.
+// CreateSign create a sign and enroll the sign for sign display.
 func (c *DisplayClient) CreateSign(ctx context.Context, req *kioskpb.Sign, opts ...gax.CallOption) (*kioskpb.Sign, error) {
 	return c.internalClient.CreateSign(ctx, req, opts...)
 }
@@ -204,6 +206,8 @@ type displayGRPCClient struct {
 
 // NewDisplayClient creates a new display client based on gRPC.
 // The returned client must be Closed when it is done being used to clean up its underlying connections.
+//
+// The Kiosk Display service.
 func NewDisplayClient(ctx context.Context, opts ...option.ClientOption) (*DisplayClient, error) {
 	clientOpts := defaultDisplayGRPCClientOptions()
 	if newDisplayClientHook != nil {

@@ -19,7 +19,7 @@ var DeleteKioskFromFile string
 func init() {
 	DisplayServiceCmd.AddCommand(DeleteKioskCmd)
 
-	DeleteKioskCmd.Flags().Int32Var(&DeleteKioskInput.Id, "id", 0, "Required.")
+	DeleteKioskCmd.Flags().Int32Var(&DeleteKioskInput.Id, "id", 0, "Required. Kiosk id.")
 
 	DeleteKioskCmd.Flags().StringVar(&DeleteKioskFromFile, "from_file", "", "Absolute path to JSON file containing request payload")
 
@@ -32,6 +32,8 @@ var DeleteKioskCmd = &cobra.Command{
 	PreRun: func(cmd *cobra.Command, args []string) {
 
 		if DeleteKioskFromFile == "" {
+
+			cmd.MarkFlagRequired("id")
 
 		}
 

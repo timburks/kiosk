@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DisplayClient interface {
-	// Create a kiosk. This enrolls the kiosk for sign display.
+	// Create a kiosk and enroll the kiosk for sign display.
 	CreateKiosk(ctx context.Context, in *Kiosk, opts ...grpc.CallOption) (*Kiosk, error)
 	// List active kiosks.
 	ListKiosks(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListKiosksResponse, error)
@@ -31,7 +31,7 @@ type DisplayClient interface {
 	GetKiosk(ctx context.Context, in *GetKioskRequest, opts ...grpc.CallOption) (*Kiosk, error)
 	// Delete a kiosk.
 	DeleteKiosk(ctx context.Context, in *DeleteKioskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// Create a sign. This enrolls the sign for sign display.
+	// Create a sign and enroll the sign for sign display.
 	CreateSign(ctx context.Context, in *Sign, opts ...grpc.CallOption) (*Sign, error)
 	// List active signs.
 	ListSigns(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListSignsResponse, error)
@@ -181,7 +181,7 @@ func (x *displayGetSignIdsForKioskIdClient) Recv() (*GetSignIdResponse, error) {
 // All implementations must embed UnimplementedDisplayServer
 // for forward compatibility
 type DisplayServer interface {
-	// Create a kiosk. This enrolls the kiosk for sign display.
+	// Create a kiosk and enroll the kiosk for sign display.
 	CreateKiosk(context.Context, *Kiosk) (*Kiosk, error)
 	// List active kiosks.
 	ListKiosks(context.Context, *emptypb.Empty) (*ListKiosksResponse, error)
@@ -189,7 +189,7 @@ type DisplayServer interface {
 	GetKiosk(context.Context, *GetKioskRequest) (*Kiosk, error)
 	// Delete a kiosk.
 	DeleteKiosk(context.Context, *DeleteKioskRequest) (*emptypb.Empty, error)
-	// Create a sign. This enrolls the sign for sign display.
+	// Create a sign and enroll the sign for sign display.
 	CreateSign(context.Context, *Sign) (*Sign, error)
 	// List active signs.
 	ListSigns(context.Context, *emptypb.Empty) (*ListSignsResponse, error)

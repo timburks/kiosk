@@ -14,8 +14,9 @@
 
 syntax = "proto3";
 
-import "google/api/client.proto";
 import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/type/latlng.proto";
@@ -25,10 +26,11 @@ option go_package = "github.com/googleapis/kiosk/rpc;kiosk";
 
 package examples.kiosk.v1;
 
+// The Kiosk Display service.
 service Display {
   option (google.api.default_host) = "localhost";
 
-  // Create a kiosk. This enrolls the kiosk for sign display.
+  // Create a kiosk and enroll the kiosk for sign display.
   rpc CreateKiosk(Kiosk) returns (Kiosk) {
       option (google.api.http) = { post: "/v1/kiosks" };
   }
@@ -48,7 +50,7 @@ service Display {
       option (google.api.http) = { delete: "/v1/kiosks/{id}" };
   }
 
-  // Create a sign. This enrolls the sign for sign display.
+  // Create a sign and enroll the sign for sign display.
   rpc CreateSign(Sign) returns (Sign) {
       option (google.api.http) = { post: "/v1/signs" };
   }
@@ -84,79 +86,93 @@ service Display {
 
 // Describes a hardware device that can display signs.
 message Kiosk {
-  // Output only.
-  int32 id = 1;                       // unique id
-  // Required.
-  string name = 2;                    // name of device hardware
-  ScreenSize size = 3;                // screen size
-  google.type.LatLng location = 4;    // kiosk location
-
-  // Output only.
-  google.protobuf.Timestamp create_time = 5;
+  // Unique id.
+  int32 id = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Name of device hardware.
+  string name = 2 [(google.api.field_behavior) = REQUIRED];
+  // Screen size.
+  ScreenSize size = 3;
+  // Kiosk location.
+  google.type.LatLng location = 4;
+  // Creation time.
+  google.protobuf.Timestamp create_time = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // Describes a digital sign.
 // Signs can include text, images, or both.
 message Sign {
-  // Output only.
-  int32 id = 1;                       // unique id
-  // Required.
-  string name = 2;                    // name of sign
-  string text = 3;                    // text to display
-  bytes image = 4;                    // image to display
-  
-  // Output only.
-  google.protobuf.Timestamp create_time = 5;
+  // Unique id.
+  int32 id = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Name of sign.
+  string name = 2 [(google.api.field_behavior) = REQUIRED];
+  // Text to display.
+  string text = 3;
+  // Image to display.
+  bytes image = 4;
+  // Creation time.             
+  google.protobuf.Timestamp create_time = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // Represents the size of a screen in pixels.
 message ScreenSize {
-  int32 width = 1;                    // screen width
-  int32 height = 2;                   // screen height
+  // Screen width.
+  int32 width = 1;
+  // Screen height.
+  int32 height = 2;
 }
 
-
+// Response message.
 message ListKiosksResponse {
+  // Kiosks.
   repeated Kiosk kiosks = 1;
 }
 
+// Request message.
 message GetKioskRequest {
-  // Required.
-  int32 id = 1;
+  // Kiosk id.
+  int32 id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
+// Request message.
 message DeleteKioskRequest {
-  // Required.
-  int32 id = 1;
+  // Kiosk id.
+  int32 id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
+// Response message.
 message ListSignsResponse {
+  // Signs.
   repeated Sign signs = 1;
 }
 
+// Request message.
 message GetSignRequest {
-  // Required.
-  int32 id = 1;
+  // Sign id.
+  int32 id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
+// Response message.
 message DeleteSignRequest {
-  // Required.
-  int32 id = 1;
+  // Sign id.
+  int32 id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
+// Request message.
 message SetSignIdForKioskIdsRequest {
-  // Required.
-  repeated int32 kiosk_ids = 1;
-  // Required.
-  int32 sign_id = 2;
+  // Kiosk ids.
+  repeated int32 kiosk_ids = 1 [(google.api.field_behavior) = REQUIRED];
+  // Sign id.
+  int32 sign_id = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
+// Request message.
 message GetSignIdForKioskIdRequest {
-  // Required.
-  int32 kiosk_id = 1;
+  // Kiosk id.
+  int32 kiosk_id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
+// Response message.
 message GetSignIdResponse {
+  // Sign id.
   int32 sign_id = 1;
 }
-

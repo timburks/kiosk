@@ -19,7 +19,7 @@ var DeleteSignFromFile string
 func init() {
 	DisplayServiceCmd.AddCommand(DeleteSignCmd)
 
-	DeleteSignCmd.Flags().Int32Var(&DeleteSignInput.Id, "id", 0, "Required.")
+	DeleteSignCmd.Flags().Int32Var(&DeleteSignInput.Id, "id", 0, "Required. Sign id.")
 
 	DeleteSignCmd.Flags().StringVar(&DeleteSignFromFile, "from_file", "", "Absolute path to JSON file containing request payload")
 
@@ -32,6 +32,8 @@ var DeleteSignCmd = &cobra.Command{
 	PreRun: func(cmd *cobra.Command, args []string) {
 
 		if DeleteSignFromFile == "" {
+
+			cmd.MarkFlagRequired("id")
 
 		}
 

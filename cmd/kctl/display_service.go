@@ -55,9 +55,9 @@ func init() {
 }
 
 var DisplayServiceCmd = &cobra.Command{
-	Use:   "display",
-	Short: "Sub-command for Service: Display",
-
+	Use:       "display",
+	Short:     "The Kiosk Display service.",
+	Long:      "The Kiosk Display service.",
 	ValidArgs: DisplaySubCommands,
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) (err error) {
 		var opts []option.ClientOption

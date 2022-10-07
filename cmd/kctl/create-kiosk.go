@@ -14,8 +14,6 @@ import (
 	latlngpb "google.golang.org/genproto/googleapis/type/latlng"
 
 	"os"
-
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 var CreateKioskInput kioskpb.Kiosk
@@ -29,23 +27,15 @@ func init() {
 
 	CreateKioskInput.Location = new(latlngpb.LatLng)
 
-	CreateKioskInput.CreateTime = new(timestamppb.Timestamp)
+	CreateKioskCmd.Flags().StringVar(&CreateKioskInput.Name, "name", "", "Required. Name of device hardware.")
 
-	CreateKioskCmd.Flags().Int32Var(&CreateKioskInput.Id, "id", 0, "Output only.")
+	CreateKioskCmd.Flags().Int32Var(&CreateKioskInput.Size.Width, "size.width", 0, "Screen width.")
 
-	CreateKioskCmd.Flags().StringVar(&CreateKioskInput.Name, "name", "", "Required.")
-
-	CreateKioskCmd.Flags().Int32Var(&CreateKioskInput.Size.Width, "size.width", 0, "")
-
-	CreateKioskCmd.Flags().Int32Var(&CreateKioskInput.Size.Height, "size.height", 0, "")
+	CreateKioskCmd.Flags().Int32Var(&CreateKioskInput.Size.Height, "size.height", 0, "Screen height.")
 
 	CreateKioskCmd.Flags().Float64Var(&CreateKioskInput.Location.Latitude, "location.latitude", 0.0, "The latitude in degrees. It must be in the range...")
 
 	CreateKioskCmd.Flags().Float64Var(&CreateKioskInput.Location.Longitude, "location.longitude", 0.0, "The longitude in degrees. It must be in the range...")
-
-	CreateKioskCmd.Flags().Int64Var(&CreateKioskInput.CreateTime.Seconds, "create_time.seconds", 0, "Represents seconds of UTC time since Unix epoch ...")
-
-	CreateKioskCmd.Flags().Int32Var(&CreateKioskInput.CreateTime.Nanos, "create_time.nanos", 0, "Non-negative fractions of a second at nanosecond...")
 
 	CreateKioskCmd.Flags().StringVar(&CreateKioskFromFile, "from_file", "", "Absolute path to JSON file containing request payload")
 
@@ -53,11 +43,13 @@ func init() {
 
 var CreateKioskCmd = &cobra.Command{
 	Use:   "create-kiosk",
-	Short: "Create a kiosk. This enrolls the kiosk for sign...",
-	Long:  "Create a kiosk. This enrolls the kiosk for sign display.",
+	Short: "Create a kiosk and enroll the kiosk for sign...",
+	Long:  "Create a kiosk and enroll the kiosk for sign display.",
 	PreRun: func(cmd *cobra.Command, args []string) {
 
 		if CreateKioskFromFile == "" {
+
+			cmd.MarkFlagRequired("name")
 
 		}
 
