@@ -19,9 +19,9 @@ var SetSignIdForKioskIdsFromFile string
 func init() {
 	DisplayServiceCmd.AddCommand(SetSignIdForKioskIdsCmd)
 
-	SetSignIdForKioskIdsCmd.Flags().Int32SliceVar(&SetSignIdForKioskIdsInput.KioskIds, "kiosk_ids", []int32{}, "Required.")
+	SetSignIdForKioskIdsCmd.Flags().Int32SliceVar(&SetSignIdForKioskIdsInput.KioskIds, "kiosk_ids", []int32{}, "Required. Kiosk ids.")
 
-	SetSignIdForKioskIdsCmd.Flags().Int32Var(&SetSignIdForKioskIdsInput.SignId, "sign_id", 0, "Required.")
+	SetSignIdForKioskIdsCmd.Flags().Int32Var(&SetSignIdForKioskIdsInput.SignId, "sign_id", 0, "Required. Sign id.")
 
 	SetSignIdForKioskIdsCmd.Flags().StringVar(&SetSignIdForKioskIdsFromFile, "from_file", "", "Absolute path to JSON file containing request payload")
 
@@ -34,6 +34,10 @@ var SetSignIdForKioskIdsCmd = &cobra.Command{
 	PreRun: func(cmd *cobra.Command, args []string) {
 
 		if SetSignIdForKioskIdsFromFile == "" {
+
+			cmd.MarkFlagRequired("kiosk_ids")
+
+			cmd.MarkFlagRequired("sign_id")
 
 		}
 

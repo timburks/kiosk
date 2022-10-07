@@ -21,7 +21,7 @@ var GetSignFromFile string
 func init() {
 	DisplayServiceCmd.AddCommand(GetSignCmd)
 
-	GetSignCmd.Flags().Int32Var(&GetSignInput.Id, "id", 0, "Required.")
+	GetSignCmd.Flags().Int32Var(&GetSignInput.Id, "id", 0, "Required. Sign id.")
 
 	GetSignCmd.Flags().StringVar(&GetSignFromFile, "from_file", "", "Absolute path to JSON file containing request payload")
 
@@ -34,6 +34,8 @@ var GetSignCmd = &cobra.Command{
 	PreRun: func(cmd *cobra.Command, args []string) {
 
 		if GetSignFromFile == "" {
+
+			cmd.MarkFlagRequired("id")
 
 		}
 
