@@ -17,8 +17,8 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:grpc/grpc.dart' as grpc;
-import 'package:kiosk/src/generated/kiosk.pb.dart';
-import 'package:kiosk/src/generated/kiosk.pbgrpc.dart';
+import 'package:kiosk/src/generated/examples/kiosk/v1/kiosk.pb.dart';
+import 'package:kiosk/src/generated/examples/kiosk/v1/kiosk.pbgrpc.dart';
 
 import 'package:kiosk/src/generated/google/protobuf/empty.pb.dart';
 
@@ -276,7 +276,7 @@ class DisplayService extends DisplayServiceBase {
     await for (var value in response) {
       yield value;
     }
-	print('lost connection');
+    print('lost connection');
   }
 }
 

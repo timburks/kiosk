@@ -19,8 +19,8 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:grpc/grpc.dart';
-import 'package:kiosk/src/generated/kiosk.pb.dart';
-import 'package:kiosk/src/generated/kiosk.pbgrpc.dart';
+import 'package:kiosk/src/generated/examples/kiosk/v1/kiosk.pb.dart';
+import 'package:kiosk/src/generated/examples/kiosk/v1/kiosk.pbgrpc.dart';
 import 'package:kiosk/src/generated/google/protobuf/empty.pb.dart';
 
 Future<Null> main(List<String> args) async {
